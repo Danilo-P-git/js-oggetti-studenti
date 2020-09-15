@@ -24,6 +24,6 @@ var arrayObjectStudenti = [
 ];
 for (var i = 0; i < arrayObjectStudenti.length; i++) {
   for (var k in arrayObjectStudenti[i]) {
-    console.log(arrayObjectStudenti[i][k]);
+    console.log( k + ": " + arrayObjectStudenti[i][k]);
   }
 }
