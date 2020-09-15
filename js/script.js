@@ -1,3 +1,6 @@
+$(document).ready(function() {
+
+
 // Creare un oggetto che descriva uno studente con le seguenti proprietà: nome, cognome e età. Stampare a schermo attraverso il for in tutte le proprietà.
 var studObject = {
   'nome': 'Danilo',
@@ -52,3 +55,17 @@ for (var i = 0; i < arrayObjectStudenti.length; i++) {
     console.log( k + ": " + arrayObjectStudenti[i][k]);
   }
 }
+
+var input = $("#entry-template").html();
+var template = Handlebars.compile(input);
+
+var html1 = template(arrayObjectStudenti[1]);
+var html2 = template(arrayObjectStudenti[2]);
+
+$("#test").append(html1);
+$("#test").append(html2);
+
+
+
+
+});
