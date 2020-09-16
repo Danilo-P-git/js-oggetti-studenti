@@ -13,18 +13,11 @@ for (var k in studObject) {
 }
 
 
+
+
 // Dare la possibilità all’utente attraverso 3 prompt di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
 
-var nomeNuovoUtente = prompt("inserisci il tuo nome");
-var cognomeNuovoUtente = prompt("inserisci il tuo cognome");
-var etaNuovoUtente = prompt("inserisci la tua età");
 
-var nuovoUtenteObject = {
-  'nome': nomeNuovoUtente,
-  'cognome': cognomeNuovoUtente,
-  'eta': etaNuovoUtente,
-}
-console.log(nuovoUtenteObject);
 
 // Creare un array di oggetti di studenti. Ciclare su tutti gli studenti e stampare per ognuno nome e cognome
 
@@ -48,22 +41,36 @@ var arrayObjectStudenti = [
 
   },
 ];
-arrayObjectStudenti.push(nuovoUtenteObject);
-
 for (var i = 0; i < arrayObjectStudenti.length; i++) {
   for (var k in arrayObjectStudenti[i]) {
     console.log( k + ": " + arrayObjectStudenti[i][k]);
   }
 }
+$("#show").click(function() {
 
-var input = $("#entry-template").html();
-var template = Handlebars.compile(input);
+  var studentTemplate = $("#entry-template").html();
+  var template = Handlebars.compile(studentTemplate);
 
-var html1 = template(arrayObjectStudenti[1]);
-var html2 = template(arrayObjectStudenti[2]);
+  for (var i = 0; i < arrayObjectStudenti.length; i++) {
+    $("#student-list").append(template(arrayObjectStudenti[i]))
+  }
+});
 
-$("#test").append(html1);
-$("#test").append(html2);
+$("#add").click(function(){
+       var newStudent = {
+           "nome": $("#nome").val(),
+           'cognome': $("#cognome").val(),
+           "eta": $("#eta").val()
+       }
+
+       console.log(newStudent);
+
+       $("#nome").val("");
+       $("#cognome").val("");
+       $("#eta").val("");
+       arrayObjectStudenti.push(newStudent);
+       console.log(arrayObjectStudenti);
+   });
 
 
 
